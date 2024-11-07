@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bienvenido a la calculadora"
+        android:textAlignment="center"
+        android:textColor="#A468F0"
+        android:textSize="26sp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Numero1:"
+            android:textAlignment="center"
+            android:textColor="#020202"
+            android:textSize="12sp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:inputType="numberDecimal"
+            android:background="#EACBF0"
+            android:id="@+id/editText1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Numero2:"
+            android:textAlignment="center"
+            android:textColor="#020202"
+            android:textSize="12sp"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:inputType="numberDecimal"
+            android:background="#E39BF2"
+            android:id="@+id/editText2"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/potencia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="#E9BCFF"
+        android:text="Potencia" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="✖️"
+        android:backgroundTint="#E9BCFF"
+        android:id="@+id/multiply"
+        android:layout_gravity="center"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="➕"
+        android:backgroundTint="#E9BCFF"
+        android:id="@+id/sumar"
+        android:layout_gravity="center"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="➖"
+        android:backgroundTint="#E9BCFF"
+        android:id="@+id/restar"
+        android:layout_gravity="center"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="➗"
+        android:backgroundTint="#E9BCFF"
+        android:id="@+id/dividir"
+        android:layout_gravity="center"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Borrar datos"
+        android:id="@+id/borrar"
+        android:layout_gravity="center"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Resultado es:  "
+        android:inputType="numberDecimal"
+        android:id="@+id/textViewResultado"
+        android:textAlignment="center"
+        android:textColor="#A468F0"
+        android:textSize="26sp"
+        />
+
+</LinearLayout>
+
