@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -19,14 +21,33 @@ import com.example.apppizzeria.modelo.entidad.Usuario;
 import com.example.apppizzeria.modelo.negocio.GestorUsuario;
 
 public class LoginActivity extends AppCompatActivity {
-
     private static final String TAG = "LoginActivity";
     private static final String ERROR_KEY = "error_mensaje";
-
+    GestorUsuario gu = new GestorUsuario();
     private EditText etNombre, etPassword;
     private TextView tvError;
     private Button btnValidar;
     private String errorMensaje = "";
+    private Button btnRegistrar;
+
+    private final ActivityResultLauncher<Intent> registerLauncher =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                    Intent data = result.getData();
+
+                    // Obtener los datos enviados desde RegisterActivity
+                    Usuario nuevoUsuario = (Usuario)data.getSerializableExtra("nuevoUsuario");
+
+                    // Guardar en el array de usuarios
+                    boolean ok = gu.registrar(nuevoUsuario);
+
+                    // Mostrar en los EditText
+                    if(ok){
+                        etNombre.setText(nuevoUsuario.getNombre());
+                        etPassword.setText(nuevoUsuario.getPassword());
+                    }
+                }
+            });
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.passwordUsuario);
         tvError = findViewById(R.id.tvError);
         btnValidar = findViewById(R.id.botonValidar);
+        btnRegistrar = findViewById(R.id.botonRegistrar);
 
         if (savedInstanceState != null) {
             errorMensaje = savedInstanceState.getString(ERROR_KEY, "");
@@ -56,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
         btnValidar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GestorUsuario gu = new GestorUsuario();
+               // GestorUsuario gu = new GestorUsuario();
                 String nombre = etNombre.getText().toString();
                 String password = etPassword.getText().toString();
 
@@ -73,6 +95,13 @@ public class LoginActivity extends AppCompatActivity {
                     tvError.setVisibility(View.VISIBLE);
                     tvError.setText(errorMensaje);
                 }
+            }
+        });
+        btnRegistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, RegistroActivity.class);
+               registerLauncher.launch(intent);
             }
         });
     }

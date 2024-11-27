@@ -31,8 +31,13 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Validar"
+        android:text="Iniciar sesion"
         android:id="@+id/botonValidar"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrar"
+        android:id="@+id/botonRegistrar"/>
     <TextView
         android:id="@+id/tvError"
         android:textColor="#FF0000"

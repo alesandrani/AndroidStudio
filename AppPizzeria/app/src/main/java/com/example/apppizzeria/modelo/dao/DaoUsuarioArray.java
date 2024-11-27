@@ -6,13 +6,23 @@ import java.util.ArrayList;
 
 public class DaoUsuarioArray {
 
-    private ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+    private static DaoUsuarioArray instace = null;
 
-    public DaoUsuarioArray(){
+    private DaoUsuarioArray(){
+        super();
         listaUsuarios.add(new Usuario("Calle A,123", "Juan", "123"));
         listaUsuarios.add(new Usuario("Calle B, 456", "Maria", "123"));
         listaUsuarios.add(new Usuario("Calle C, 789", "Elena", "123"));
     }
+
+    public static DaoUsuarioArray getInstance(){
+        if(instace == null) {
+            instace = new DaoUsuarioArray();
+        }
+        return instace;
+    }
+
+    private ArrayList<Usuario> listaUsuarios = new ArrayList<>();
 
     /**
      * Metodo que devuelve un objeto usuario por nombre si coincide dentro del array
@@ -26,6 +36,11 @@ public class DaoUsuarioArray {
             }
         }
         return null;
+    }
+
+    public boolean addUsuario(Usuario user){
+        listaUsuarios.add(user);
+        return true;
     }
 
 }
