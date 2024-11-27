@@ -31,6 +31,7 @@ public class ResumenActivity extends AppCompatActivity {
 
 
         Usuario usuario = (Usuario)getIntent().getSerializableExtra("usuario");
+        //Integer i = getIntent().getIntExtra("cuatro",4);
         Log.d("ResumenActivity","Usuario: " + usuario);
         textViewResumen = findViewById(R.id.textViewResumen);
         textViewUsuario.setText("Usuario: " + usuario.getNombre());

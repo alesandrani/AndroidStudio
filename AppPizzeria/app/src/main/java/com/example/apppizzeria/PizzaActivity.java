@@ -100,6 +100,7 @@ public class PizzaActivity extends AppCompatActivity {
             Log.i("PizzaActivity", "Pizza: " + pizza);
             Intent intent = new Intent(PizzaActivity.this,ResumenActivity.class);
             intent.putExtra("usuario",usuario);
+            //intent.putExtra("cuatro",4);
             startActivity(intent);
 
         });
